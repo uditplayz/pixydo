@@ -133,6 +133,7 @@ function toggle(task, origin) {
         toast(combo.count > 1 ? `+${task.xp} XP  COMBO x${combo.count}!` : `+${task.xp} XP`);
         burst(origin, `+${task.xp}`);
         bounceMascot();
+        pulseHud();
 
         if (doneToday() >= DAILY_GOAL && state.goalDay !== dayKey()) {
             state.goalDay = dayKey();
@@ -181,6 +182,10 @@ function burst(rect, label) {
     document.body.appendChild(f);
     f.animate([{ transform: 'translate(-50%,0)', opacity: 1 }, { transform: 'translate(-50%,-40px)', opacity: 0 }],
         { duration: 900, easing: 'steps(8)' }).onfinish = () => f.remove();
+}
+
+function pulseHud() {
+    $('hud').animate([{ transform: 'scale(1.03)' }, { transform: 'scale(1)' }], { duration: 300, easing: 'steps(3)' });
 }
 
 function bounceMascot() {
@@ -313,6 +318,9 @@ function render() {
     $('title').textContent = titleFor(level());
     segments($('xp-bar'), Math.floor(inLevel / 10), 10);
     $('xp-text').textContent = `${inLevel} / ${XP_PER_LEVEL} XP to next level`;
+    $('hud-level').textContent = String(level()).padStart(2, '0');
+    $('hud-xp').textContent = state.xp;
+    segments($('hud-bar'), Math.floor(inLevel / 10), 10);
     $('stats').textContent = `${state.stats.done} quests · ${state.stats.focus} focus runs`;
 
     // daily goal + mascot

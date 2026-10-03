@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
     <main class="app">
@@ -18,6 +18,12 @@
                 <button class="btn ghost small" id="sound" title="Toggle sound (M)">SFX ON</button>
             </div>
         </header>
+
+        <div class="box hud" id="hud">
+            <span>LV <b id="hud-level">01</b></span>
+            <div class="bar" id="hud-bar"></div>
+            <span><b id="hud-xp">0</b> XP</span>
+        </div>
 
         <section class="layout">
             <div class="quests">
@@ -97,6 +103,6 @@
         </div>
     </div>
     <div id="toasts" class="toasts" role="status"></div>
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
 </body>
 </html>

@@ -156,3 +156,7 @@ input[type=text]:focus, select:focus { outline: none; border-color: var(--green)
 
 .foot { margin-top: 32px; text-align: center; font-size: 18px; }
 .foot a { color: var(--green); }
+
+.hud { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; position: sticky; top: 8px; z-index: 10; }
+.hud .bar { flex: 1; margin: 0; }
+.hud b { font: 14px 'Press Start 2P', monospace; color: var(--green); }
