@@ -19,6 +19,19 @@ Open `index.html` in a browser (or serve the folder) and start adding quests. Th
 
 Un-checking a quest takes back the exact XP it gave. Deleting or clearing done quests keeps your XP.
 
+## Screenshots
+
+- **Light Mode**:
+  
+<img width="544" height="462" alt="image" src="https://github.com/user-attachments/assets/17b0b3a3-a288-46ab-b531-c9d03be61a5e" />
+
+<br />
+
+- **dark Mode**:
+
+<img width="538" height="458" alt="image" src="https://github.com/user-attachments/assets/bf606472-78a0-41c0-b79f-72ec5b1c1e0f" />
+
+
 ## Your data
 
 Everything is saved in your browser's `localStorage`, so it survives reloads. Use `[reset all data]` under the list to start over.
