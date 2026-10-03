@@ -26,6 +26,7 @@ function createTodoNode(todo, index) {
         todo.completed = checkbox.checked;
 
         // TODO: visual feedback strike-through when completed
+        textSpan.style.textDecoration = todo.completed? 'line-through': "";
         saveTodos();
     })
 
@@ -88,4 +89,9 @@ function addTodo(){
 }
 
 addBtn.addEventListener("click", addTodo);
+input.addEventListener('keydown', (e)=>{
+    if (e.key == 'Enter'){
+        addTodo();
+    }
+})
 render();
