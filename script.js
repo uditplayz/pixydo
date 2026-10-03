@@ -33,9 +33,9 @@ function createTodoNode(todo, index) {
     const textSpan = document.createElement('span');
     textSpan.textContent = todo.text;
     textSpan.style.margin = '0 8px';
-    if(todo.completed){
+    if(todo.completed) {
         textSpan.style.textDecoration = 'line-through';
-
+    }
         // add double-click event listener
         document.addEventListener("dblclick", ()=>{
             const newText = prompt("Edit todo", todo.text);
@@ -60,7 +60,6 @@ function createTodoNode(todo, index) {
         li.appendChild(dltBtn);
         return li
 
-    }
 }
 
 // render the whole todo list from todos array
