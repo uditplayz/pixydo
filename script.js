@@ -20,7 +20,7 @@ const BADGES = [
 ];
 
 const fresh = () => ({
-    tasks: [], xp: 0, days: [], badges: [], muted: false, goalDay: '',
+    tasks: [], xp: 0, days: [], badges: [], muted: false, theme: '', goalDay: '',
     stats: { done: 0, high: 0, focus: 0, bestCombo: 0 },
 });
 
@@ -359,6 +359,7 @@ function render() {
 
     $('combo').textContent = `x${combo.count > 0 && Date.now() - combo.last <= COMBO_WINDOW ? combo.count : 1}`;
     $('clock-task').textContent = currentTask() ? currentTask().text : 'Add a quest to focus on';
+    $('theme').textContent = isDark() ? 'LIGHT' : 'DARK';
     $('sound').textContent = state.muted ? 'SFX OFF' : 'SFX ON';
 }
 
@@ -438,6 +439,15 @@ $('clear-done').addEventListener('click', () => {
     render();
 });
 
+const isDark = () => document.documentElement.dataset.theme === 'dark';
+$('theme').addEventListener('click', () => {
+    state.theme = isDark() ? 'light' : 'dark';
+    document.documentElement.dataset.theme = state.theme;
+    SFX.tab();
+    save();
+    render();
+});
+
 $('sound').addEventListener('click', () => {
     state.muted = !state.muted;
     save();
@@ -447,7 +457,7 @@ $('sound').addEventListener('click', () => {
 
 $('reset').addEventListener('click', () => {
     if (!confirm('Erase all quests, XP, badges and streaks? This cannot be undone.')) return;
-    Object.assign(state, fresh(), { muted: state.muted });
+    Object.assign(state, fresh(), { muted: state.muted, theme: state.theme });
     combo = { count: 0, last: 0 };
     save();
     render();
@@ -457,6 +467,7 @@ document.addEventListener('keydown', (e) => {
     if (/INPUT|SELECT/.test(document.activeElement.tagName)) return;
     if (e.key.toLowerCase() === 'n') { e.preventDefault(); $('todo-input').focus(); }
     if (e.key.toLowerCase() === 'm') $('sound').click();
+    if (e.key.toLowerCase() === 'd') $('theme').click();
 });
 
 $('date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });

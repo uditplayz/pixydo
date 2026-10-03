@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixy Do - A gamified pixel To-Do</title>
+    <script>
+        // apply the saved theme before first paint to avoid a flash
+        try {
+            const t = (JSON.parse(localStorage.getItem('pixydo')) || {}).theme;
+            const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        } catch { /* default light */ }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
     <main class="app">
@@ -15,6 +23,7 @@
             <h1>PIXY DO</h1>
             <div class="top-right">
                 <span id="date" class="muted"></span>
+                <button class="btn ghost small" id="theme" title="Toggle dark mode (D)">DARK</button>
                 <button class="btn ghost small" id="sound" title="Toggle sound (M)">SFX ON</button>
             </div>
         </header>
@@ -103,6 +112,6 @@
         </div>
     </div>
     <div id="toasts" class="toasts" role="status"></div>
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>

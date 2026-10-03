@@ -9,6 +9,26 @@
     --high: #b4534a;
     --med: #a58c3a;
     --low: #6f9a6a;
+    --field: #ffffff;
+    --high-bg: #f1d9d3;
+    --med-bg: #eee6c0;
+}
+
+:root[data-theme='dark'] {
+    color-scheme: dark;
+    --bg: #181f19;
+    --panel: #212b23;
+    --soft: #2c3a2f;
+    --line: #435547;
+    --green: #8fc78a;
+    --ink: #e4ebd6;
+    --mute: #8a9b85;
+    --high: #e58a80;
+    --med: #d8c066;
+    --low: #8fc78a;
+    --field: #182019;
+    --high-bg: #4a2a27;
+    --med-bg: #403b1f;
 }
 
 * { box-sizing: border-box; }
@@ -64,7 +84,7 @@ p { margin: 8px 0 0; }
 .add { display: flex; gap: 8px; margin-bottom: 16px; }
 .add input { flex: 1; min-width: 0; }
 .add .btn { flex: none; }
-input[type=text], select { background: #fff; border: 2px solid var(--line); padding: 4px 8px; }
+input[type=text], select { background: var(--field); border: 2px solid var(--line); padding: 4px 8px; }
 input[type=text]:focus, select:focus { outline: none; border-color: var(--green); }
 
 .tabs { display: flex; gap: 4px; margin-bottom: 8px; }
@@ -83,13 +103,13 @@ input[type=text]:focus, select:focus { outline: none; border-color: var(--green)
 
 .check {
     appearance: none; width: 22px; height: 22px; margin: 0; flex: none; cursor: pointer;
-    background: #fff; border: 2px solid var(--line);
+    background: var(--field); border: 2px solid var(--line);
 }
 .check:checked { background: var(--green); border-color: var(--green); box-shadow: inset 0 0 0 4px var(--green); background-image: linear-gradient(var(--panel), var(--panel)); background-size: 8px 8px; background-repeat: no-repeat; background-position: center; }
 
 .tag { font-size: 18px; padding: 0 8px; background: var(--soft); }
-.tag.high { color: var(--high); background: #f1d9d3; }
-.tag.medium { color: var(--med); background: #eee6c0; }
+.tag.high { color: var(--high); background: var(--high-bg); }
+.tag.medium { color: var(--med); background: var(--med-bg); }
 .tag.low { color: var(--low); }
 
 .icon { background: none; border: 0; color: var(--mute); cursor: pointer; font: inherit; padding: 0 4px; }

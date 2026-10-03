@@ -14,7 +14,8 @@ Open `index.html` in a browser (or serve the folder) and start adding quests. Th
 - **Streak and week**: any day with a completed quest counts toward your streak.
 - **Focus timer**: 25 minute focus / 5 minute break. A finished focus session gives +15 XP.
 - **Sound**: chiptune sound effects generated with the Web Audio API. Toggle with the `SFX` button or `M`.
-- **Shortcuts**: `N` jumps to the new quest input, `M` toggles sound.
+- **Dark mode**: toggle with the `DARK` / `LIGHT` button or `D`. It follows your system theme until you pick one, and your choice is saved.
+- **Shortcuts**: `N` jumps to the new quest input, `M` toggles sound, `D` toggles dark mode.
 
 Un-checking a quest takes back the exact XP it gave. Deleting or clearing done quests keeps your XP.
 
