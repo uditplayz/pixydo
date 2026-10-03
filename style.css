@@ -111,14 +111,48 @@ input[type=text]:focus, select:focus { outline: none; border-color: var(--green)
 .week div.on { background: var(--green); color: var(--panel); }
 .week div.today { outline: 2px solid var(--green); outline-offset: 1px; }
 
-.toast {
-    position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 80px);
-    background: var(--green); color: var(--panel); padding: 8px 16px; box-shadow: 4px 4px 0 var(--line);
-    transition: transform .2s steps(4); pointer-events: none;
-}
-.toast.show { transform: translate(-50%, 0); }
+
+.top-right { display: flex; align-items: center; gap: 12px; }
+.btn.small { flex: none; padding: 2px 10px; font-size: 18px; }
+.tabrow { margin-bottom: 8px; }
+.tabrow .tabs { margin: 0; }
+.tabrow .icon { font-size: 18px; }
+
+.badges-box { margin-top: 20px; }
+.badges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+.badge { text-align: center; font-size: 16px; line-height: 1; color: var(--mute); background: var(--soft); padding: 8px 4px; }
+.badge svg { width: 36px; height: 36px; display: block; margin: 0 auto 6px; shape-rendering: crispEdges; filter: grayscale(1); opacity: .3; }
+.badge.got { color: var(--green); }
+.badge.got svg { filter: none; opacity: 1; }
+
+#sprite { animation: bob 1.2s steps(2) infinite; }
+#sprite.hop { animation: hop .5s steps(5); }
+@keyframes bob { 50% { transform: translateY(-3px); } }
+@keyframes hop { 40% { transform: translateY(-18px) scale(1.1); } }
+
+.particle { position: fixed; width: 6px; height: 6px; z-index: 20; pointer-events: none; }
+.float { position: fixed; z-index: 20; pointer-events: none; font: 12px 'Press Start 2P', monospace; color: var(--green); }
+
+.toasts { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); display: grid; gap: 8px; z-index: 30; pointer-events: none; }
+.toast { background: var(--green); color: var(--panel); padding: 6px 16px; box-shadow: 4px 4px 0 var(--line); text-align: center; white-space: nowrap; animation: pop .2s steps(3); }
+.toast.gold { background: #e8c84a; color: var(--ink); }
+@keyframes pop { from { transform: translateY(16px); opacity: 0; } }
+
+.levelup { position: fixed; inset: 0; background: rgba(43, 58, 44, .75); display: flex; align-items: center; justify-content: center; z-index: 40; cursor: pointer; }
+.levelup[hidden] { display: none; }
+.levelup-card { background: var(--panel); border: 2px solid var(--green); box-shadow: 8px 8px 0 var(--line); padding: 24px 40px; text-align: center; animation: pop .3s steps(4); }
+.levelup-card h2 { font: 20px 'Press Start 2P', monospace; color: var(--green); margin: 12px 0 0; animation: blink .6s steps(2) infinite; }
+#levelup-sprite svg { width: 100px; height: 100px; shape-rendering: crispEdges; }
+@keyframes blink { 50% { color: #e8c84a; } }
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
 
 @media (max-width: 760px) {
     .layout { grid-template-columns: 1fr; }
     .add { flex-wrap: wrap; }
+    .badges { grid-template-columns: repeat(2, 1fr); }
+    .top { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
+
+.foot { margin-top: 32px; text-align: center; font-size: 18px; }
+.foot a { color: var(--green); }

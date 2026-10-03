@@ -13,7 +13,10 @@
     <main class="app">
         <header class="top">
             <h1>PIXY DO</h1>
-            <span id="date" class="muted"></span>
+            <div class="top-right">
+                <span id="date" class="muted"></span>
+                <button class="btn ghost small" id="sound" title="Toggle sound (M)">SFX ON</button>
+            </div>
         </header>
 
         <section class="layout">
@@ -21,21 +24,30 @@
                 <form id="add-form" class="box add">
                     <input id="todo-input" type="text" placeholder="New quest... (press N)" maxlength="80" autocomplete="off">
                     <select id="priority" aria-label="Priority">
-                        <option value="high">High +30</option>
-                        <option value="medium" selected>Med +20</option>
-                        <option value="low">Low +10</option>
+                        <option value="high">Boss +30</option>
+                        <option value="medium" selected>Main +20</option>
+                        <option value="low">Side +10</option>
                     </select>
                     <button class="btn" id="add-todo-btn">ADD</button>
                 </form>
 
-                <nav class="tabs" id="tabs">
-                    <button data-filter="all" class="on">All</button>
-                    <button data-filter="active">Active</button>
-                    <button data-filter="done">Done</button>
-                </nav>
+                <div class="row tabrow">
+                    <nav class="tabs" id="tabs">
+                        <button data-filter="all" class="on">All</button>
+                        <button data-filter="active">Active</button>
+                        <button data-filter="done">Done</button>
+                    </nav>
+                    <button class="icon" id="clear-done">[clear done]</button>
+                </div>
 
                 <ul id="todo-list" class="box list"></ul>
-                <p class="muted hint">Click a quest to edit. No boss battles, just small steps. <button type="button" id="reset" class="icon">[reset all data]</button></p>
+                <p class="muted hint">Click a quest to edit. Chain quests fast for a combo bonus.
+                    <button type="button" id="reset" class="icon">[reset all data]</button></p>
+
+                <div class="box badges-box">
+                    <div class="row"><span>ACHIEVEMENTS</span><span id="badge-count" class="muted"></span></div>
+                    <div class="badges" id="badges"></div>
+                </div>
             </div>
 
             <aside class="side">
@@ -43,12 +55,15 @@
                     <div class="row"><span>LEVEL <b id="level">1</b></span><span id="title" class="muted"></span></div>
                     <div class="bar" id="xp-bar"></div>
                     <p class="muted" id="xp-text"></p>
+                    <p class="muted" id="stats"></p>
                 </div>
 
                 <div class="box garden">
                     <div id="sprite"></div>
-                    <div class="row"><span id="progress-text"></span><span id="progress-pct"></span></div>
+                    <p class="center" id="mood"></p>
+                    <div class="row"><span>DAILY GOAL</span><span id="goal-text"></span></div>
                     <div class="bar" id="day-bar"></div>
+                    <div class="row"><span class="muted">COMBO</span><span id="combo" class="muted">x1</span></div>
                 </div>
 
                 <div class="box">
@@ -67,9 +82,21 @@
                 </div>
             </aside>
         </section>
+        <footer class="foot muted">
+            Made with &hearts; by <a href="https://github.com/uditplayz" target="_blank" rel="noopener">Udit</a>
+            &middot; <a href="https://github.com/uditplayz/pixydo" target="_blank" rel="noopener">source</a>
+        </footer>
     </main>
 
-    <div id="toast" class="toast" role="status"></div>
+    <div id="levelup" class="levelup" hidden>
+        <div class="levelup-card">
+            <div id="levelup-sprite"></div>
+            <h2>LEVEL UP!</h2>
+            <p id="levelup-text"></p>
+            <p class="muted">click to continue</p>
+        </div>
+    </div>
+    <div id="toasts" class="toasts" role="status"></div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,22 +1,29 @@
 # Pixy Do
 
-A minimal, gamified pixel-art to-do app. Plain HTML, CSS and JavaScript, no build step.
+A minimal, gamified pixel-art to-do app. Plain HTML, CSS and JavaScript, no build step, no audio files.
 
-Open `index.html` in a browser and start adding quests.
+Open `index.html` in a browser (or serve the folder) and start adding quests. The app starts empty.
 
-## How it works
+## The game
 
-- **Quests**: add a task with a priority (High +30 XP, Medium +20, Low +10). Click a task's text to edit it.
-- **XP and levels**: completing a quest earns XP, and every 100 XP is a level. Un-checking a quest takes its XP back.
-- **Daily garden**: a pixel plant grows from seed to sprout to bloom as you finish today's quests.
+- **Quests**: Boss (+30 XP), Main (+20) and Side (+10). Click a quest's text to edit it.
+- **Combos**: finish quests within 90 seconds of each other to chain a combo, up to x5. Each step adds 25% bonus XP.
+- **Daily goal**: complete 3 quests in a day for a +50 XP bonus. Your pixel plant grows from seed to sprout to bloom as you go.
+- **Levels**: every 100 XP is a level, with a new title and a level-up screen.
+- **Achievements**: 8 pixel badges to unlock (first quest, combos, boss quests, streaks, focus sessions, levels).
 - **Streak and week**: any day with a completed quest counts toward your streak.
-- **Focus timer**: 25 minute focus / 5 minute break. A finished focus session gives +10 XP.
-- **Shortcut**: press `N` to jump to the new quest input.
+- **Focus timer**: 25 minute focus / 5 minute break. A finished focus session gives +15 XP.
+- **Sound**: chiptune sound effects generated with the Web Audio API. Toggle with the `SFX` button or `M`.
+- **Shortcuts**: `N` jumps to the new quest input, `M` toggles sound.
 
-Everything is saved in your browser's `localStorage`.
+Un-checking a quest takes back the exact XP it gave. Deleting or clearing done quests keeps your XP.
+
+## Your data
+
+Everything is saved in your browser's `localStorage`, so it survives reloads. Use `[reset all data]` under the list to start over.
 
 ## Files
 
 - `index.html`: layout
-- `style.css`: pixel styling
-- `script.js`: state, XP, timer and rendering
+- `style.css`: pixel styling and animations
+- `script.js`: game logic, sound, timer and rendering
