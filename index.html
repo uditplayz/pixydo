@@ -3,17 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixy Do - A gamified To-Do List</title>
+    <title>Pixy Do - A gamified pixel To-Do</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Pixy Do</h1>
+    <main class="app">
+        <header class="top">
+            <h1>PIXY DO</h1>
+            <span id="date" class="muted"></span>
+        </header>
 
-    <!-- input and button to add ToDos -->
-    <input type="text" id="todo-input" placeholder="Enter your task here">
-    <button id="add-todo-btn">+</button>
+        <section class="layout">
+            <div class="quests">
+                <form id="add-form" class="box add">
+                    <input id="todo-input" type="text" placeholder="New quest... (press N)" maxlength="80" autocomplete="off">
+                    <select id="priority" aria-label="Priority">
+                        <option value="high">High +30</option>
+                        <option value="medium" selected>Med +20</option>
+                        <option value="low">Low +10</option>
+                    </select>
+                    <button class="btn" id="add-todo-btn">ADD</button>
+                </form>
 
-    <ul id="todo-list"></ul>
+                <nav class="tabs" id="tabs">
+                    <button data-filter="all" class="on">All</button>
+                    <button data-filter="active">Active</button>
+                    <button data-filter="done">Done</button>
+                </nav>
+
+                <ul id="todo-list" class="box list"></ul>
+                <p class="muted hint">Click a quest to edit. No boss battles, just small steps. <button type="button" id="reset" class="icon">[reset all data]</button></p>
+            </div>
+
+            <aside class="side">
+                <div class="box">
+                    <div class="row"><span>LEVEL <b id="level">1</b></span><span id="title" class="muted"></span></div>
+                    <div class="bar" id="xp-bar"></div>
+                    <p class="muted" id="xp-text"></p>
+                </div>
+
+                <div class="box garden">
+                    <div id="sprite"></div>
+                    <div class="row"><span id="progress-text"></span><span id="progress-pct"></span></div>
+                    <div class="bar" id="day-bar"></div>
+                </div>
+
+                <div class="box">
+                    <div class="row"><span>FOCUS</span><span id="streak" class="muted"></span></div>
+                    <div class="clock" id="clock">25:00</div>
+                    <p class="muted center" id="clock-task"></p>
+                    <div class="row gap">
+                        <button class="btn" id="timer-start">START</button>
+                        <button class="btn ghost" id="timer-mode">BREAK</button>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="row"><span>THIS WEEK</span></div>
+                    <div class="week" id="week"></div>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <div id="toast" class="toast" role="status"></div>
     <script src="script.js"></script>
 </body>
 </html>
