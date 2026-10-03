@@ -4,8 +4,8 @@ const addBtn = document.getElementById("add-todo-btn");
 const list = document.getElementById("todo-list");
 
 // try to load saved todos from local storage (if any)
-const todos = localStorage.getItem('todos');
-const todos = saved? JSON.parse(saved) : [];
+const saved = localStorage.getItem('todos');
+const todos = saved ? JSON.parse(saved) : [];
 
 
 function saveTodos() {
