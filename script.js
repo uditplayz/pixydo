@@ -90,7 +90,7 @@ function addTodo(){
 
 addBtn.addEventListener("click", addTodo);
 input.addEventListener('keydown', (e)=>{
-    if (e.key == 'Enter'){
+    if(e.key == 'Enter'){
         addTodo();
     }
 })
