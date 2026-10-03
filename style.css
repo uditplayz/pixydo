@@ -9,6 +9,7 @@ body {
     background: #f4f7fb;
     color: #1f2937;
     font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 h1 {
@@ -18,11 +19,12 @@ h1 {
 }
 
 #todo-input {
-    width: min(100%, 420px);
+    width: min(420px, calc(100% - 56px));
     padding: 12px 14px;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
     font-size: 16px;
+    vertical-align: middle;
 }
 
 #todo-input:focus {
